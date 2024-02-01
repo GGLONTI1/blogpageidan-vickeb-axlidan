@@ -4,7 +4,7 @@ import styles from "./links.module.css"
 import Image from "next/image";
 import NavLink from "./navLink/navLink"
 import { handleLogout } from "@/lib/action";
-import { auth } from "@/lib/auth";
+
 
 
 const links = [
@@ -26,9 +26,10 @@ const links = [
     },
 ];
 
-const Links = async ({session}) => {
+const Links = async ({ session }) => {
     const [open, setopen] = useState(false)
-    // temporary
+    
+    
     const isAdmin = true;
 
     return (

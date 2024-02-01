@@ -4,8 +4,10 @@ import { revalidatePath } from "next/cache";
 import { Post, User } from "./models";
 import { connectToDb } from "./utils";
 import { signIn, signOut } from "./auth";
+import bcrypt from "bcrypt";
 
-export const addPost = async (prevState, formData) => {
+export const addPost = async (formData) => {
+  
   const { title, desc, slug, userId } = Object.fromEntries(formData);
   try {
     connectToDb();
@@ -42,7 +44,7 @@ export const deletePost = async (formData) => {
   }
 };
 
-export const addUser = async (prevState, formData) => {
+export const addUser = async (formData) => {
   const { username, email, password, img } = Object.fromEntries(formData);
 
   try {
@@ -82,14 +84,14 @@ export const deleteUser = async (formData) => {
 export const handleGithubLogin = async () => {
   "use server";
   await signIn("github");
-};
+}
 
 export const handleLogout = async () => {
   "use server";
   await signOut();
 };
 
-export const register = async (previousState, formData) => {
+export const register = async (formData) => {
   const { username, email, password, img, passwordRepeat } =
     Object.fromEntries(formData);
 
@@ -126,7 +128,7 @@ export const register = async (previousState, formData) => {
   }
 };
 
-export const login = async (prevState, formData) => {
+export const login = async (formData) => {
   const { username, password } = Object.fromEntries(formData);
 
   try {

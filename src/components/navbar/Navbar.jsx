@@ -5,18 +5,15 @@ import { auth } from '@/lib/auth'
 
 
 const Navbar = async () => {
-
-    const session = await auth();
-    console.log(session)
+  const session = await auth();
     return (
         <div className={styles.container}>
             <Link href="/" className={styles.logo}>Logo</Link>
             <div>
-                <Links session={session} />
+                <Links session={session}/>
             </div>
         </div>
-
     )
 }
 
-export default Navbar
+export default Navbar;
